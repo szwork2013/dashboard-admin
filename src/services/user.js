@@ -3,7 +3,7 @@
 * @Date:   2017-03-27T02:33:13+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T11:07:07+08:00
+* @Last modified time: 2017-03-27T11:40:34+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -16,7 +16,7 @@ export async function fetchList(url, { offset = 0, limit = 10 } = {}) {
 
   return {
     pagination: {
-      current: Math.floor(offset, limit) + 1,
+      current: Math.floor(offset / limit) + 1,
       total,
     },
     data: data.map(({ _id, createdAt, ...other }, index) => ({
