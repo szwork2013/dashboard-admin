@@ -3,7 +3,7 @@
 * @Date:   2017-03-27T02:13:35+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T05:18:37+08:00
+* @Last modified time: 2017-03-27T12:05:44+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -84,7 +84,7 @@ export default {
     *'sync/list'({ payload }, { select, race, call, put }) { // eslint-disable-line
       const pageIndex = payload || 1;
       const { url, columns, data: oData, pagination } = yield select(({ user }) => user);
-      const keys = oData.map(e => e.key);
+      // const keys = oData.map(e => e.key);
 
       if (!url || !columns) {
         throw new Error('请先做好配置!');
@@ -109,7 +109,8 @@ export default {
             ...pagination,
             ...data.pagination,
           },
-          data: oData.concat(data.data.filter(d => keys.indexOf(d.key) === -1)),
+          // data: oData.concat(data.data.filter(d => keys.indexOf(d.key) === -1)),
+          data: oData.merge(data.data),
         },
       });
     },
