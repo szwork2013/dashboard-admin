@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T20:54:59+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-26T21:39:09+08:00
+* @Last modified time: 2017-03-27T18:16:50+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -11,6 +11,8 @@
 import React, { PureComponent, PropTypes } from 'react';
 
 import Menus from './Menus';
+
+import logo from '../assets/logo.svg';
 
 const getStyles = () => {
   return {
@@ -28,6 +30,7 @@ const getStyles = () => {
       image: {
         borderStyle: 'none',
         width: 40,
+        height: '100%',
         marginRight: 8,
         transition: 'all .3s cubic-bezier(.215, .61, .355, 1)',
       },
@@ -60,7 +63,7 @@ export default class Sider extends PureComponent {
     return (
       <div style={{ ...styles.root, ...this.props.style }}>
         <div style={styles.logo}>
-          <img style={styles.logo.image} alt="" src="" />
+          <img style={styles.logo.image} alt="" src={logo} />
           <span style={styles.logo.text}>Dashboard</span>
         </div>
         <Menus

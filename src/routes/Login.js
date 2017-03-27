@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T20:02:00+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T05:15:18+08:00
+* @Last modified time: 2017-03-27T18:29:22+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -12,6 +12,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'dva';
 
 import { Button, Row, Form, Input } from 'antd';
+
+import logo from '../assets/logo.svg';
 
 const getStyles = () => {
   return {
@@ -69,7 +71,7 @@ function Login({
   return (
     <div style={styles.root}>
       <div style={styles.logo}>
-        <img style={styles.logo.image} alt="" src="" />
+        <img style={styles.logo.image} alt="" src={logo} />
         <span style={styles.logo.text}>Dashboard</span>
       </div>
       <form>
