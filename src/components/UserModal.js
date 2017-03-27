@@ -3,7 +3,7 @@
 * @Date:   2017-03-27T01:44:45+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T05:35:32+08:00
+* @Last modified time: 2017-03-27T11:24:29+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -63,7 +63,7 @@ const modal = ({
               { required: true, message: '请输入Columns JSON' },
               {
                 validator(rule, value, cb) {
-                  try { JSON.parse(value); } catch (err) { cb('Invalid JSON String.'); }
+                  try { JSON.parse(value); cb(); } catch (err) { cb('Invalid JSON String.'); }
                 },
               },
             ],
