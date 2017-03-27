@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T20:54:59+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T18:16:50+08:00
+* @Last modified time: 2017-03-27T18:43:14+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -14,7 +14,7 @@ import Menus from './Menus';
 
 import logo from '../assets/logo.svg';
 
-const getStyles = () => {
+const getStyles = (props) => {
   return {
     root: {},
 
@@ -33,6 +33,7 @@ const getStyles = () => {
         height: '100%',
         marginRight: 8,
         transition: 'all .3s cubic-bezier(.215, .61, .355, 1)',
+        padding: props.siderFold ? 5 : 0,
       },
 
       text: {

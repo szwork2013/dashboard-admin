@@ -4,7 +4,7 @@ gin
 * @Date:   2017-03-26T20:18:00+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T05:08:47+08:00
+* @Last modified time: 2017-03-27T18:41:17+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -13,6 +13,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'dva';
 
 import Helmet from 'react-helmet';
+
+import logoIco from '../assets/logo.png';
 
 const getStyles = () => {
   return {
@@ -38,6 +40,7 @@ function App({ auth, children, location: { pathname } }, { router }) {
     <div style={styles.root}>
       <Helmet>
         <title>DASHBOARD ADMIN</title>
+        <link rel="shortcut icon" href={logoIco} />
         <script src="//at.alicdn.com/t/font_c4y7asse3q1cq5mi.js" />
       </Helmet>
       {children}
