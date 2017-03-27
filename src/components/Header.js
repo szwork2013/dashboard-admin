@@ -3,7 +3,7 @@
 * @Date:   2017-03-27T00:23:23+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T00:43:13+08:00
+* @Last modified time: 2017-03-27T11:05:16+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -71,7 +71,7 @@ export default class Header extends PureComponent {
           <Menu mode="horizontal" onClick={handleClickMenu}>
             <Menu.SubMenu
               style={styles.menu}
-              title={<span><Icon type="user" />{user.name}</span>}
+              title={<span><Icon type="user" />{user.username}</span>}
             >
               <Menu.Item key="logout">
                 <a>注销</a>

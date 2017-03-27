@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T21:27:51+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T05:30:42+08:00
+* @Last modified time: 2017-03-27T11:05:31+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -15,12 +15,12 @@ import Sider from '../components/Sider';
 import Header from '../components/Header';
 import Bread from '../components/Bread';
 
-const getStyles = () => {
+const getStyles = (props) => {
   return {
     root: {},
 
     sider: {
-      width: 224,
+      width: !props.siderFold ? 224 : 42,
       backgroundColor: '#3e3e3e',
       position: 'absolute',
       overflow: 'visible',
@@ -34,7 +34,7 @@ const getStyles = () => {
 
     main: {
       position: 'relative',
-      marginLeft: 224,
+      marginLeft: !props.siderFold ? 224 : 42,
       overflow: 'auto',
       height: '100vh',
     },
@@ -50,13 +50,21 @@ const getStyles = () => {
   };
 };
 
-function AdminApp({ logout, location, children }) {
-  const styles = getStyles();
+function AdminApp({ auth, admin, logout, location, children, switchSider }) {
+  const styles = getStyles(admin);
   return (
     <div style={styles.root}>
-      <Sider style={styles.sider} />
+      <Sider
+        style={styles.sider}
+        {...admin}
+      />
       <div style={styles.main}>
-        <Header logout={logout} />
+        <Header
+          logout={logout}
+          switchSider={switchSider}
+          {...admin}
+          user={auth}
+        />
         <Bread location={location} />
         <div style={styles.container}>
           <div style={styles.content}>
@@ -68,12 +76,18 @@ function AdminApp({ logout, location, children }) {
   );
 }
 
-const mapStateToProps = state => ({ auth: state.auth });
+const mapStateToProps = state => ({
+  admin: state.admin,
+  auth: state.auth,
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {
     logout() {
       dispatch({ type: 'auth/unauthorize' });
+    },
+    switchSider() {
+      dispatch({ type: 'admin/sider/switch' });
     },
   };
 };

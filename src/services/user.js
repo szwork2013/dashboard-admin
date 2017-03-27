@@ -3,7 +3,7 @@
 * @Date:   2017-03-27T02:33:13+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T04:19:29+08:00
+* @Last modified time: 2017-03-27T11:07:07+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -21,7 +21,7 @@ export async function fetchList(url, { offset = 0, limit = 10 } = {}) {
     },
     data: data.map(({ _id, createdAt, ...other }, index) => ({
       ...other,
-      key: _id,
+      key: _id || other.key || other.id,
       id: index + 1,
       createdAt: moment(createdAt).format('YYYY-MM-DD HH:mm:SS'),
     })),

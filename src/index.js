@@ -33,6 +33,8 @@ app.use(createLoading());
 
 app.model(require('./models/user'));
 
+app.model(require("./models/admin"));
+
 app.model(require('./models/auth'));
 
 // 2. Plugins
