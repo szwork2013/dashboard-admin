@@ -3,7 +3,7 @@
 * @Date:   2017-01-04T17:00:03+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T18:12:47+08:00
+* @Last modified time: 2017-03-27T19:17:03+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -12,16 +12,22 @@ import dva from 'dva';
 import pick from 'lodash.pick';
 import createLoading from 'dva-loading';
 import { message } from 'antd';
+
+import store from 'store';
+
 import './index.css';
 
-const data = window.localStorage.getItem('tmp-ald'); // eslint-disable-line
-const initialState = data ? JSON.parse(data) : {};
+// const data = window.localStorage.getItem('tmp-ald'); // eslint-disable-line
+// const data = store.get('tmp-ald');
+// const initialState = data ? JSON.parse(data) : {};
+const initialState = store.get('tmp-ald') || {};
 
 // 1. Initialize
 const app = dva({
   initialState,
   onStateChange() {
-    window.localStorage.setItem('tmp-ald', JSON.stringify(pick(app._store.getState(), ['auth']))); // eslint-disable-line
+    // localStorage.setItem('tmp-ald', JSON.stringify(pick(app._store.getState(), ['auth'])));
+    store.set('tmp-ald', pick(app._store.getState(), ['auth'])); // eslint-disable-line
   },
   onError(err) {
     message.error(err.toString());

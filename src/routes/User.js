@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T21:56:45+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T11:19:04+08:00
+* @Last modified time: 2017-03-28T11:55:55+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -83,7 +83,10 @@ const mapStateToProps = ({ user, loading }) => {
     url: user.url,
     columns: user.columns,
     pagination: user.pagination,
-    data: user.data,
+    data: user.data.slice(
+      (user.pagination.current - 1) * user.pagination.pageSize,
+      user.pagination.current * user.pagination.pageSize,
+    ),
   };
 };
 

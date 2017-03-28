@@ -3,12 +3,14 @@
 * @Date:   2017-03-27T02:13:35+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T12:05:44+08:00
+* @Last modified time: 2017-03-28T11:56:10+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
 import { delay } from 'dva/saga';
 import once from 'once';
+import store from 'store';
+
 import * as services from '../services/user';
 
 export default {
@@ -16,9 +18,11 @@ export default {
   state: {
     visible: false,
 
-    url: JSON.parse(localStorage.getItem('ald') || '{}').url, // eslint-disable-line
+    // url: JSON.parse(localStorage.getItem('ald') || '{}').url, // eslint-disable-line
+    url: store.get('ald') ? store.get('ald').url : null,
 
-    columns: JSON.parse(localStorage.getItem('ald') || '{}').columns, // eslint-disable-line
+    // columns: JSON.parse(localStorage.getItem('ald') || '{}').columns, // eslint-disable-line
+    columns: store.get('ald') ? store.get('ald').columns : [],
 
     // columns: [{
     //   title: 'ID',
@@ -65,6 +69,9 @@ export default {
     save(state, { payload }) {
       return { ...state, ...payload };
     },
+    'save/pagination'(state, { payload }) {
+      return { ...state, pagination: { ...state.pagination, current: payload } };
+    },
     'save/settings'(state, { payload: { url, columns } }) { // eslint-disable-line
       localStorage.setItem('ald', JSON.stringify({ url, columns })); // eslint-disable-line
       return { ...state, url, columns, visible: false };
@@ -85,6 +92,14 @@ export default {
       const pageIndex = payload || 1;
       const { url, columns, data: oData, pagination } = yield select(({ user }) => user);
       // const keys = oData.map(e => e.key);
+      const offset = (pageIndex - 1) * pagination.pageSize;
+      const limit = pagination.pageSize;
+
+      const lData = oData.slice(offset, offset + limit);
+
+      if (lData.length === limit && lData.every(e => e !== undefined)) {
+        return yield put({ type: 'save/pagination', payload: pageIndex });
+      }
 
       if (!url || !columns) {
         throw new Error('请先做好配置!');
@@ -92,8 +107,8 @@ export default {
 
       const { data, timeout } = yield race({
         data: call(services.fetchList, url, {
-          offset: (pageIndex - 1) * pagination.pageSize,
-          limit: pagination.pageSize,
+          offset,
+          limit,
         }),
         timeout: call(delay, 3000),
       });
