@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T20:58:24+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-26T21:54:22+08:00
+* @Last modified time: 2017-04-01T10:56:32+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -52,12 +52,18 @@ export default class Menus extends PureComponent {
 
   static defaultProps = {
     menus: [
-      {
-        key: 'dashboard',
-        icon: 'laptop',
-        label: 'Dashboard',
-        path: 'admin',
-      },
+      // {
+      //   key: 'dashboard',
+      //   icon: 'laptop',
+      //   label: 'Dashboard',
+      //   path: 'admin/dashboard',
+      // },
+      // {
+      //   key: 'chart',
+      //   icon: 'area-chart',
+      //   label: 'Chart',
+      //   path: 'admin/chart',
+      // },
     ],
     darkTheme: true,
   };

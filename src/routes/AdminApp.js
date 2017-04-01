@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T21:27:51+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T11:05:31+08:00
+* @Last modified time: 2017-04-01T11:06:33+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -65,7 +65,10 @@ function AdminApp({ auth, admin, logout, location, children, switchSider }) {
           {...admin}
           user={auth}
         />
-        <Bread location={location} />
+        <Bread
+          location={location}
+          menus={admin.menus}
+        />
         <div style={styles.container}>
           <div style={styles.content}>
             {children}

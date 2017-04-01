@@ -3,7 +3,7 @@
 * @Date:   2017-03-27T02:13:35+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-28T11:56:10+08:00
+* @Last modified time: 2017-03-29T12:09:42+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -140,7 +140,7 @@ export default {
     setup({ dispatch, history }) {
       const ff = () => dispatch({ type: 'sync/list' });
       history.listen(({ pathname }) => {
-        if (pathname === '/admin') {
+        if (['/admin', '/admin/dashboard'].includes(pathname)) {
           once(ff)();
         }
       });
