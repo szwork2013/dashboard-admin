@@ -3,7 +3,7 @@
 * @Date:   2017-04-01T13:55:47+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-01T17:31:12+08:00
+* @Last modified time: 2017-04-01T22:01:11+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -32,7 +32,7 @@ export default {
     },
     'layout/add'(state) {
       const layout = { i: uuid(), x: 0, y: 0, w: 6, h: 6 };
-      return { ...state, layout: [layout, ...state.layout] };
+      return { ...state, layout: [layout, ...state.layout], selectedId: layout.i };
     },
     'layout/remove'(state, { payload: key }) {
       return { ...state, layout: state.layout.filter(e => e.i !== key), selectedId: null };

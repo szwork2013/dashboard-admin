@@ -3,7 +3,7 @@
 * @Date:   2017-03-29T00:04:33+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-01T18:23:44+08:00
+* @Last modified time: 2017-04-01T22:21:28+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -28,7 +28,7 @@ const getStyles = (props) => {
   return {
     root: {},
 
-    header: {
+    controls: {
       padding: 10,
       fontSize: 24,
       display: 'flex',
@@ -48,6 +48,26 @@ const getStyles = (props) => {
         marginRight: 16,
       },
     },
+
+    body: {
+      overflow: 'auto',
+      margin: '16px 0',
+      display: 'flex',
+      flexFlow: 'row-reverse nowrap',
+    },
+
+    tools: {
+      width: 206,
+      minHeight: 560,
+    },
+
+    layout: {
+      flex: '1 0 1000px',
+      // width: 800,
+      backgroundColor: '#fff',
+      boxShadow: '0 2px 4px 0 rgba(0,0,0,.1), 0 16px 24px 0 rgba(81,129,228,.1)',
+      minHeight: 560,
+    },
   };
 };
 
@@ -62,7 +82,7 @@ export default class LayoutPane extends PureComponent {
 
     return (
       <div style={styles.root}>
-        <div style={styles.header}>
+        <div style={styles.controls}>
           <span>图表</span>
           <div style={styles.btns}>
             <Button
@@ -89,21 +109,28 @@ export default class LayoutPane extends PureComponent {
             />
           </div>
         </div>
-        <EGridLayout
-          selectedId={this.props.selectedId}
-          editable={this.props.editable}
-          layout={this.props.layout}
-          className="layout"
-          cols={12}
-          rowHeight={30}
-          width={1200}
-          onLayoutSelect={this.props.onLayoutSelect}
-          onLayoutChange={this.props.onLayoutChange}
-        >
-          <Echarts key="a" option={getOption()} style={{ width: '100%', height: '100%' }} />
-          <Echarts key="b" option={lineOption} style={{ width: '100%', height: '100%' }} />
-          <Echarts key="c" option={barOption} style={{ width: '100%', height: '100%' }} />
-        </EGridLayout>
+        <div style={styles.body}>
+          <div style={styles.tools}>
+            123
+          </div>
+          <div style={styles.layout}>
+            <EGridLayout
+              selectedId={this.props.selectedId}
+              editable={this.props.editable}
+              layout={this.props.layout}
+              className="layout"
+              cols={12}
+              rowHeight={30}
+              width={1000}
+              onLayoutSelect={this.props.onLayoutSelect}
+              onLayoutChange={this.props.onLayoutChange}
+            >
+              <Echarts key="a" option={getOption()} style={{ width: '100%', height: '100%' }} />
+              <Echarts key="b" option={lineOption} style={{ width: '100%', height: '100%' }} />
+              <Echarts key="c" option={barOption} style={{ width: '100%', height: '100%' }} />
+            </EGridLayout>
+          </div>
+        </div>
       </div>
     );
   }

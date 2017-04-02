@@ -3,7 +3,7 @@
 * @Date:   2017-04-01T15:28:03+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-01T18:26:10+08:00
+* @Last modified time: 2017-04-01T22:07:41+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -13,7 +13,11 @@ import GridLayout from 'react-grid-layout';
 
 const getStyles = () => {
   return {
-    root: {},
+    root: {
+      position: 'relative',
+      width: '100%',
+      height: '100%',
+    },
 
     child: {
       position: 'relative',
@@ -21,6 +25,15 @@ const getStyles = () => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+
+      empty: {
+        border: '1px dashed #ccc',
+      },
+
+      selected: {
+        // border: '1px dashed rgba(0, 255, 255, .98)',
+        border: '1px dashed #f04134',
+      },
     },
   };
 };
@@ -63,9 +76,18 @@ export default class EGridLayout extends PureComponent {
     onLayoutSelect: () => {},
   };
 
+  // state = {
+  //   width: 0,
+  // };
+  //
+  // componentDidMount() {
+  //   this.setState({ width: this.gridLayoutArea.offsetWidth });
+  // }
+
   render() {
     const {
-      selectedId, editable, layout, children,
+      editable, layout, cols, rowHeight, width,
+      selectedId, children,
       onLayoutSelect, onLayoutChange,
     } = this.props;
     const keys = children.map(e => e.key);
@@ -78,9 +100,9 @@ export default class EGridLayout extends PureComponent {
         isResizable={editable}
         isDraggable={editable}
         layout={layout}
-        cols={12}
-        rowHeight={30}
-        width={1200}
+        cols={cols}
+        rowHeight={rowHeight}
+        width={width}
         onLayoutChange={onLayoutChange}
       >
         {layout.map(({ i }) => {
@@ -89,7 +111,7 @@ export default class EGridLayout extends PureComponent {
             return (
               <div
                 key={i}
-                style={styles.child}
+                style={{ ...styles.child, ...(i === selectedId ? styles.child.selected : {}) }}
                 onClick={() => handleLayoutSelect(i === selectedId ? null : i)}
               >
                 { children[index] }
@@ -97,7 +119,17 @@ export default class EGridLayout extends PureComponent {
             );
           } else {
             return (
-              <div key={i} style={styles.child} onClick={() => handleLayoutSelect(i)}>空</div>
+              <div
+                key={i}
+                style={{
+                  ...styles.child,
+                  ...(editable ? styles.child.empty : {}),
+                  ...(i === selectedId ? styles.child.selected : {}),
+                }}
+                onClick={() => handleLayoutSelect(i)}
+              >
+                { editable ? '空' : null }
+              </div>
             );
           }
         })}
