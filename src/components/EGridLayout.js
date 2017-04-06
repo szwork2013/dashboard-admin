@@ -3,13 +3,15 @@
 * @Date:   2017-04-01T15:28:03+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-01T22:07:41+08:00
+* @Last modified time: 2017-04-06T15:12:37+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
 
 import React, { PureComponent, PropTypes } from 'react';
 import GridLayout from 'react-grid-layout';
+
+import Menu from './Chart/Menu';
 
 const getStyles = () => {
   return {
@@ -112,9 +114,11 @@ export default class EGridLayout extends PureComponent {
               <div
                 key={i}
                 style={{ ...styles.child, ...(i === selectedId ? styles.child.selected : {}) }}
-                onClick={() => handleLayoutSelect(i === selectedId ? null : i)}
+                onClick={() => handleLayoutSelect(i)}
               >
-                { children[index] }
+                <Menu editable={editable}>
+                  { React.cloneElement(children[index], { editable }) }
+                </Menu>
               </div>
             );
           } else {
@@ -128,7 +132,7 @@ export default class EGridLayout extends PureComponent {
                 }}
                 onClick={() => handleLayoutSelect(i)}
               >
-                { editable ? '空' : null }
+                { editable ? <Menu editable={editable}>+</Menu> : null }
               </div>
             );
           }

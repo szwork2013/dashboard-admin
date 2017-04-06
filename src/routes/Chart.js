@@ -3,7 +3,7 @@
 * @Date:   2017-03-28T23:48:52+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-01T17:26:11+08:00
+* @Last modified time: 2017-04-05T12:51:39+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -32,6 +32,7 @@ function Chart(props) {
         removable={props.deletable}
         editable={props.editable}
         layout={props.layout}
+        charts={props.charts}
         onSwitchEdit={props.onSwitchEdit}
         onLayoutSelect={props.onLayoutSelect}
         onLayoutAdd={props.onLayoutAdd}
@@ -43,12 +44,13 @@ function Chart(props) {
 }
 
 const mapStateToProps = ({ chart }) => {
-  const { selectedId, editable, layout } = chart;
+  const { selectedId, editable, layout, charts } = chart;
   return {
     selectedId,
     deletable: selectedId !== null,
     editable,
     layout,
+    charts,
   };
 };
 

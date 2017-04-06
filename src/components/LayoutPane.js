@@ -3,7 +3,7 @@
 * @Date:   2017-03-29T00:04:33+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-01T22:21:28+08:00
+* @Last modified time: 2017-04-05T11:38:30+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -12,14 +12,8 @@ import React, { PureComponent } from 'react';
 
 import { Switch, Button, Icon } from 'antd';
 
-import Echarts from 'echarts-for-react';
-// import Echarts from 'react-echarts';
-
 import EGridLayout from './EGridLayout';
-
-import data from '../../mock/data';
-import lineOption from '../../mock/line';
-import barOption from '../../mock/bar';
+import Chart from './Chart';
 
 import '../../node_modules/react-grid-layout/css/styles.css';
 import '../../node_modules/react-resizable/css/styles.css';
@@ -71,10 +65,6 @@ const getStyles = (props) => {
   };
 };
 
-const getOption = () => {
-  return data;
-};
-
 export default class LayoutPane extends PureComponent {
 
   render() {
@@ -110,9 +100,7 @@ export default class LayoutPane extends PureComponent {
           </div>
         </div>
         <div style={styles.body}>
-          <div style={styles.tools}>
-            123
-          </div>
+          <div style={styles.tools} />
           <div style={styles.layout}>
             <EGridLayout
               selectedId={this.props.selectedId}
@@ -125,9 +113,9 @@ export default class LayoutPane extends PureComponent {
               onLayoutSelect={this.props.onLayoutSelect}
               onLayoutChange={this.props.onLayoutChange}
             >
-              <Echarts key="a" option={getOption()} style={{ width: '100%', height: '100%' }} />
-              <Echarts key="b" option={lineOption} style={{ width: '100%', height: '100%' }} />
-              <Echarts key="c" option={barOption} style={{ width: '100%', height: '100%' }} />
+              {
+                this.props.charts.map(e => <Chart {...e} />)
+              }
             </EGridLayout>
           </div>
         </div>
