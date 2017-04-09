@@ -3,7 +3,7 @@
 * @Date:   2017-01-04T17:00:03+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T19:17:03+08:00
+* @Last modified time: 2017-04-08T15:26:24+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -39,7 +39,7 @@ app.use(createLoading());
 
 app.model(require('./models/user'));
 
-app.model(require("./models/chart"));
+app.model(require('./models/chart'));
 
 app.model(require('./models/admin'));
 
