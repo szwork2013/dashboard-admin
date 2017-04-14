@@ -3,13 +3,13 @@
 * @Date:   2017-04-05T00:52:33+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-05T10:49:37+08:00
+* @Last modified time: 2017-04-14T00:04:17+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
 
 export default {
-  name: '一天气温',
+  title: '一天气温',
   labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
   series: [
     {

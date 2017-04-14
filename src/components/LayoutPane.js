@@ -3,7 +3,7 @@
 * @Date:   2017-03-29T00:04:33+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-06T21:06:29+08:00
+* @Last modified time: 2017-04-13T23:45:30+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -59,6 +59,7 @@ const getStyles = (props) => {
       flex: '1 0 1000px',
       // width: 800,
       backgroundColor: '#fff',
+      // backgroundColor: '#201c22',
       boxShadow: '0 2px 4px 0 rgba(0,0,0,.1), 0 16px 24px 0 rgba(81,129,228,.1)',
       minHeight: 560,
     },

@@ -3,7 +3,7 @@
 * @Date:   2017-04-04T19:55:48+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-06T15:01:54+08:00
+* @Last modified time: 2017-04-13T23:43:47+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -34,10 +34,11 @@ const getStyles = (props, state) => {
       // zIndex: 10,
       // opacity: 1,
       fontSize: 32,
-      backgroundColor: '#fff',
+      // backgroundColor: '#fff',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: 'transparent',
     },
 
     availableChart: {
