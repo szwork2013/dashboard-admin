@@ -3,7 +3,7 @@
 * @Date:   2017-03-27T04:43:44+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T11:03:53+08:00
+* @Last modified time: 2017-04-17T11:47:41+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -12,7 +12,7 @@ export default {
   namespace: 'auth',
   state: {
     authorization: null,
-    auth: false,
+    auth: true,
   },
   reducers: {
     save(state, { payload }) {
