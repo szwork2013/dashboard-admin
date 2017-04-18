@@ -54,6 +54,12 @@ const CHARTS = [
     icon: 'bar-chart',
     model: require('./BarTop10'),
   },
+  {
+    key: 'china-map',
+    name: 'china-map',
+    icon: 'map-chart',
+    model: require('./ChinaMap'),
+  },
 ];
 
 export function getChart({ type, data } = {}) {
