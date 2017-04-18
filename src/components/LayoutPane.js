@@ -3,7 +3,7 @@
 * @Date:   2017-03-29T00:04:33+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-13T23:45:30+08:00
+* @Last modified time: 2017-04-19T00:56:26+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -12,11 +12,8 @@ import React, { PureComponent } from 'react';
 
 import { Switch, Button, Icon } from 'antd';
 
-import EGridLayout from './EGridLayout';
-import Chart from './Chart';
-
-import '../../node_modules/react-grid-layout/css/styles.css';
-import '../../node_modules/react-resizable/css/styles.css';
+import EGridLayout from './ChartManager/EGridLayout';
+import Chart from './ChartManager';
 
 const getStyles = (props) => {
   return {

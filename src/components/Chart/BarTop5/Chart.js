@@ -3,7 +3,7 @@
 * @Date:   2017-04-14T00:16:19+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-14T01:15:42+08:00
+* @Last modified time: 2017-04-19T01:15:36+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -113,7 +113,8 @@ const getStyles = (props) => {
 export default class Chart extends PureComponent {
 
   render() {
-    const { title, series } = this.props;
+    const { option, data, getOption } = this.props;
+    const { title, series } = getOption(option, data);
     const styles = getStyles(this.props);
     return (
       <div style={styles.root}>

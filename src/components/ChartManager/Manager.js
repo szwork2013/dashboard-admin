@@ -3,12 +3,13 @@
 * @Date:   2017-04-05T00:50:35+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-18T15:07:39+08:00
+* @Last modified time: 2017-04-19T01:04:31+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
 
-import React, { PropTypes, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Echarts from 'echarts-for-react';
 
 import { getChart } from './meta';
@@ -117,32 +118,35 @@ export default class Chart extends PureComponent {
 
     const styles = getStyles(this.props);
     const data = { title: t, labels, series, text, subtext, colors };
-    const { title, Chart: SelfChart, option } = getChart({ type, data });
+    // const { title, Chart: SelfChart, option } = getChart({ type, data });
+    const Chart = getChart({ type });
 
-    if (SelfChart) {
-      return <SelfChart {...option} />;
-    }
+    return (<Chart />);
 
-    return (
-      <div style={styles.root}>
-        <div style={styles.header}>
-          <div style={styles.header.title}>{title}</div>
-          <div style={styles.header.rightArea}>
-            <span style={styles.header.rightArea.label}>当日累加</span>
-            <span style={styles.header.rightArea.value}>1,521</span>
-          </div>
-        </div>
-        <div style={styles.body}>
-          <Echarts
-            style={{ position: 'relative', width: '100%', height: '100%' }}
-            className={this.props.className}
-            option={option}
-            theme={theme}
-            notMerge
-            lazyUpdate
-          />
-        </div>
-      </div>
-    );
+    // if (SelfChart) {
+    //   return <SelfChart {...option} />;
+    // }
+    //
+    // return (
+    //   <div style={styles.root}>
+    //     <div style={styles.header}>
+    //       <div style={styles.header.title}>{title}</div>
+    //       <div style={styles.header.rightArea}>
+    //         <span style={styles.header.rightArea.label}>当日累加</span>
+    //         <span style={styles.header.rightArea.value}>1,521</span>
+    //       </div>
+    //     </div>
+    //     <div style={styles.body}>
+    //       <Echarts
+    //         style={{ position: 'relative', width: '100%', height: '100%' }}
+    //         className={this.props.className}
+    //         option={option}
+    //         theme={theme}
+    //         notMerge
+    //         lazyUpdate
+    //       />
+    //     </div>
+    //   </div>
+    // );
   }
 }
