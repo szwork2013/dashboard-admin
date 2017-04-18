@@ -7,7 +7,7 @@
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
-
+/* eslint-disable */
 module.exports = {
   series: [{
     type: 'pie',

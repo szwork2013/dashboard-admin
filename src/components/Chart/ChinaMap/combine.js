@@ -18,6 +18,18 @@ function seriesCreator(series) {
   }));
 }
 
+function getMax(series) {
+  const maxs = [];
+  series.forEach((e) => {
+    let max = 0;
+    e.data.forEach((d) => {
+      max = d.value > max ? d.value : max;
+    });
+    maxs.push(max);
+  });
+  return Math.max.apply(null, maxs);
+}
+
 function formatterCreator(series) {
   return (params) => {
     let res = `${params.name}<br/>`;
@@ -37,6 +49,10 @@ export default function (option, data) {
   const { series } = data;
   return {
     ...option,
+    visualMap: {
+      ...option.visualMap,
+      max: getMax(series),
+    },
     tooltip: {
       ...option.tooltip,
       formatter: formatterCreator(series),
