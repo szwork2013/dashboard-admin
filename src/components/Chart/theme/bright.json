@@ -1,0 +1,159 @@
+{
+  "seriesCnt": 3,
+  "backgroundColor": "#ffffff",
+  "titleColor": "#666666",
+  "subtitleColor": "#666666",
+  "textColorShow": false,
+  "textColor": "#333",
+  "markTextColor": "#ffffff",
+  "color": [
+    "#539bef",
+    "#86d9fc",
+    "#b0e897"
+  ],
+  "borderColor": "#ccc",
+  "borderWidth": "0",
+  "visualMapColor": [
+    "#539bef",
+    "#d0e7f7"
+  ],
+  "legendTextColor": "#cccccc",
+  "kColor": "#b0e897",
+  "kColor0": "#539bef",
+  "kBorderColor": "#93bd80",
+  "kBorderColor0": "#416a9c",
+  "kBorderWidth": 1,
+  "lineWidth": 2,
+  "symbolSize": "4",
+  "symbol": "emptyCircle",
+  "symbolBorderWidth": "2",
+  "lineSmooth": true,
+  "graphLineWidth": 1,
+  "graphLineColor": "#cccccc",
+  "mapLabelColor": "#666666",
+  "mapLabelColorE": "rgb(102,102,102)",
+  "mapBorderColor": "#ffffff",
+  "mapBorderColorE": "#73b2fa",
+  "mapBorderWidth": "1",
+  "mapBorderWidthE": 1,
+  "mapAreaColor": "#dedede",
+  "mapAreaColorE": "#d7dfe5",
+  "axes": [{
+      "type": "all",
+      "name": "通用坐标轴",
+      "axisLineShow": true,
+      "axisLineColor": "#333",
+      "axisTickShow": true,
+      "axisTickColor": "#333",
+      "axisLabelShow": true,
+      "axisLabelColor": "#333",
+      "splitLineShow": true,
+      "splitLineColor": [
+        "#ccc"
+      ],
+      "splitAreaShow": false,
+      "splitAreaColor": [
+        "rgba(250,250,250,0.3)",
+        "rgba(200,200,200,0.3)"
+      ]
+    },
+    {
+      "type": "category",
+      "name": "类目坐标轴",
+      "axisLineShow": true,
+      "axisLineColor": "#f2f2f2",
+      "axisTickShow": true,
+      "axisTickColor": "#f2f2f2",
+      "axisLabelShow": true,
+      "axisLabelColor": "#8c8c8c",
+      "splitLineShow": false,
+      "splitLineColor": [
+        "#ccc"
+      ],
+      "splitAreaShow": false,
+      "splitAreaColor": [
+        "rgba(250,250,250,0.3)",
+        "rgba(200,200,200,0.3)"
+      ]
+    },
+    {
+      "type": "value",
+      "name": "数值坐标轴",
+      "axisLineShow": true,
+      "axisLineColor": "#f2f2f2",
+      "axisTickShow": true,
+      "axisTickColor": "#f2f2f2",
+      "axisLabelShow": true,
+      "axisLabelColor": "#8c8c8c",
+      "splitLineShow": true,
+      "splitLineColor": [
+        "#f2f2f2"
+      ],
+      "splitAreaShow": false,
+      "splitAreaColor": [
+        "rgba(250,250,250,0.3)",
+        "rgba(200,200,200,0.3)"
+      ]
+    },
+    {
+      "type": "log",
+      "name": "对数坐标轴",
+      "axisLineShow": true,
+      "axisLineColor": "#f2f2f2",
+      "axisTickShow": true,
+      "axisTickColor": "#f2f2f2",
+      "axisLabelShow": true,
+      "axisLabelColor": "#8c8c8c",
+      "splitLineShow": true,
+      "splitLineColor": [
+        "#f2f2f2"
+      ],
+      "splitAreaShow": false,
+      "splitAreaColor": [
+        "rgba(250,250,250,0.3)",
+        "rgba(200,200,200,0.3)"
+      ]
+    },
+    {
+      "type": "time",
+      "name": "时间坐标轴",
+      "axisLineShow": true,
+      "axisLineColor": "#f2f2f2",
+      "axisTickShow": true,
+      "axisTickColor": "#f2f2f2",
+      "axisLabelShow": true,
+      "axisLabelColor": "#8c8c8c",
+      "splitLineShow": true,
+      "splitLineColor": [
+        "#f2f2f2"
+      ],
+      "splitAreaShow": false,
+      "splitAreaColor": [
+        "rgba(250,250,250,0.3)",
+        "rgba(200,200,200,0.3)"
+      ]
+    }
+  ],
+  "axisSeperateSetting": true,
+  "toolboxColor": "#cccccc",
+  "toolboxEmpasisColor": "#808080",
+  "tooltipAxisColor": "#cccccc",
+  "tooltipAxisWidth": "1",
+  "timelineLineColor": "#539bef",
+  "timelineLineWidth": "2",
+  "timelineItemColor": "#539bef",
+  "timelineItemColorE": "#c1ddf5",
+  "timelineCheckColor": "#509ef8",
+  "timelineCheckBorderColor": "rgba(193,221,245,0.51)",
+  "timelineItemBorderWidth": "1",
+  "timelineControlColor": "#539bef",
+  "timelineControlBorderColor": "#539bef",
+  "timelineControlBorderWidth": "0.5",
+  "timelineLabelColor": "#8c8c8c",
+  "datazoomBackgroundColor": "rgba(47,69,84,0)",
+  "datazoomDataColor": "rgba(47,69,84,0.3)",
+  "datazoomFillColor": "rgba(167,183,204,0.4)",
+  "datazoomHandleColor": "#a7b7cc",
+  "datazoomHandleWidth": "100",
+  "datazoomLabelColor": "#666666"
+}
