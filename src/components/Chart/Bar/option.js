@@ -3,7 +3,7 @@
 * @Date:   2017-03-06T17:46:52+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-18T14:14:57+08:00
+* @Last modified time: 2017-04-18T15:09:49+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -21,7 +21,7 @@ module.exports = {
   //   '#D3C24B',
   //   '#536572',
   // ],
-  // backgroundColor: '#fff',
+  backgroundColor: '#fff',
   tooltip: {
     trigger: 'axis',
     // backgroundColor: '#fff',

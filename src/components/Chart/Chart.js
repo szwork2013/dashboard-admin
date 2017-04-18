@@ -3,7 +3,7 @@
 * @Date:   2017-04-05T00:50:35+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-18T14:20:43+08:00
+* @Last modified time: 2017-04-18T15:07:39+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -94,7 +94,10 @@ export default class Chart extends PureComponent {
   };
 
   render() {
-    const { title: t, editable, type, labels, series, text, subtext, colors, theme } = this.props;
+    const {
+      theme = 'bright',
+      title: t, editable, type, labels, series, text, subtext, colors,
+    } = this.props;
     if (!type) {
       return editable ? (
         <div
@@ -117,11 +120,8 @@ export default class Chart extends PureComponent {
     const { title, Chart: SelfChart, option } = getChart({ type, data });
 
     if (SelfChart) {
-      console.log(option);
       return <SelfChart {...option} />;
     }
-
-    console.log(option);
 
     return (
       <div style={styles.root}>
