@@ -3,7 +3,7 @@
 * @Date:   2017-04-05T15:16:55+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-18T14:32:42+08:00
+* @Last modified time: 2017-04-19T16:15:17+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -32,7 +32,7 @@ function formatter(params) {
 
 function seriesCreator(series) {
   return series.map(e => ({
-    type: 'line',
+    type: 'bar',
     symbol: 'circle',
     smooth: true,
     ...e,
@@ -41,10 +41,9 @@ function seriesCreator(series) {
 
 export default function (option, data) {
   const { tooltip, xAxis } = option;
-  const { labels, series, colors } = data;
+  const { labels, series } = data;
   return {
     ...option,
-    ...(colors && Array.isArray(colors) ? { color: colors } : {}),
     tooltip: {
       ...tooltip,
       formatter,

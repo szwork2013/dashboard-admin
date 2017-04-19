@@ -4,7 +4,7 @@ gin
 * @Date:   2017-03-26T20:18:00+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-03-27T18:41:17+08:00
+* @Last modified time: 2017-04-19T17:32:48+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -14,7 +14,12 @@ import { connect } from 'dva';
 
 import Helmet from 'react-helmet';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import logoIco from '../assets/logo.png';
+
+injectTapEventPlugin();
 
 const getStyles = () => {
   return {
@@ -43,7 +48,9 @@ function App({ auth, children, location: { pathname } }, { router }) {
         <link rel="shortcut icon" href={logoIco} />
         <script src="//at.alicdn.com/t/font_c4y7asse3q1cq5mi.js" />
       </Helmet>
-      {children}
+      <MuiThemeProvider>
+        {children}
+      </MuiThemeProvider>
     </div>
   );
 }

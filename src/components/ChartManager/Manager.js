@@ -3,15 +3,16 @@
 * @Date:   2017-04-05T00:50:35+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-18T15:07:39+08:00
+* @Last modified time: 2017-04-19T16:21:22+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
 
-import React, { PropTypes, PureComponent } from 'react';
-import Echarts from 'echarts-for-react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import { getChart } from './meta';
+import withTitle from './withTitle';
 
 const getStyles = (props) => {
   return {
@@ -62,7 +63,7 @@ const getStyles = (props) => {
   };
 };
 
-export default class Chart extends PureComponent {
+export default class Manager extends PureComponent {
   /* eslint-disable */
   static propTypes = {
     type: PropTypes.string,
@@ -95,8 +96,10 @@ export default class Chart extends PureComponent {
 
   render() {
     const {
-      theme = 'bright',
-      title: t, editable, type, labels, series, text, subtext, colors,
+      // theme = 'bright',
+      // title: t,
+      editable, type,
+      // labels, series, text, subtext, colors,
     } = this.props;
     if (!type) {
       return editable ? (
@@ -115,34 +118,38 @@ export default class Chart extends PureComponent {
       ) : null;
     }
 
-    const styles = getStyles(this.props);
-    const data = { title: t, labels, series, text, subtext, colors };
-    const { title, Chart: SelfChart, option } = getChart({ type, data });
+    // const styles = getStyles(this.props);
+    // const data = { title: t, labels, series, text, subtext, colors };
+    // const { title, Chart: SelfChart, option } = getChart({ type, data });
+    const Chart = getChart({ type });
+    const ChartWithTitle = withTitle(<Chart {...this.props} />);
 
-    if (SelfChart) {
-      return <SelfChart {...option} />;
-    }
+    return <ChartWithTitle />;
 
-    return (
-      <div style={styles.root}>
-        <div style={styles.header}>
-          <div style={styles.header.title}>{title}</div>
-          <div style={styles.header.rightArea}>
-            <span style={styles.header.rightArea.label}>当日累加</span>
-            <span style={styles.header.rightArea.value}>1,521</span>
-          </div>
-        </div>
-        <div style={styles.body}>
-          <Echarts
-            style={{ position: 'relative', width: '100%', height: '100%' }}
-            className={this.props.className}
-            option={option}
-            theme={theme}
-            notMerge
-            lazyUpdate
-          />
-        </div>
-      </div>
-    );
+    // if (SelfChart) {
+    //   return <SelfChart {...option} />;
+    // }
+    //
+    // return (
+    //   <div style={styles.root}>
+    //     <div style={styles.header}>
+    //       <div style={styles.header.title}>{title}</div>
+    //       <div style={styles.header.rightArea}>
+    //         <span style={styles.header.rightArea.label}>当日累加</span>
+    //         <span style={styles.header.rightArea.value}>1,521</span>
+    //       </div>
+    //     </div>
+    //     <div style={styles.body}>
+    //       <Echarts
+    //         style={{ position: 'relative', width: '100%', height: '100%' }}
+    //         className={this.props.className}
+    //         option={option}
+    //         theme={theme}
+    //         notMerge
+    //         lazyUpdate
+    //       />
+    //     </div>
+    //   </div>
+    // );
   }
 }

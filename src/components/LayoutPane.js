@@ -3,7 +3,7 @@
 * @Date:   2017-03-29T00:04:33+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-13T23:45:30+08:00
+* @Last modified time: 2017-04-19T17:48:00+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -11,14 +11,15 @@
 import React, { PureComponent } from 'react';
 
 import { Switch, Button, Icon } from 'antd';
+import { ResizableBox } from 'react-resizable';
 
-import EGridLayout from './EGridLayout';
-import Chart from './Chart';
+import Control from 'zcontrol';
+import ZUtils from 'zcontrol/lib/utils';
 
-import '../../node_modules/react-grid-layout/css/styles.css';
-import '../../node_modules/react-resizable/css/styles.css';
+import EGridLayout from './ChartManager/EGridLayout';
+import Chart from './ChartManager';
 
-const getStyles = (props) => {
+const getStyles = (props, state) => {
   return {
     root: {},
 
@@ -47,7 +48,7 @@ const getStyles = (props) => {
       overflow: 'auto',
       margin: '16px 0',
       display: 'flex',
-      flexFlow: 'row-reverse nowrap',
+      flexFlow: 'row nowrap',
     },
 
     tools: {
@@ -56,20 +57,35 @@ const getStyles = (props) => {
     },
 
     layout: {
-      flex: '1 0 1000px',
+      // flex: '1 0 0px',
       // width: 800,
       backgroundColor: '#fff',
       // backgroundColor: '#201c22',
       boxShadow: '0 2px 4px 0 rgba(0,0,0,.1), 0 16px 24px 0 rgba(81,129,228,.1)',
       minHeight: 560,
+      width: state.width,
+      // height: state.height,
+    },
+
+    editor: {
+      flex: 1,
+      position: 'relative',
     },
   };
 };
 
 export default class LayoutPane extends PureComponent {
+  state = {
+    width: 1000,
+    height: 560,
+  };
+
+  handleOptionChange = (option) => {
+    console.log(option);
+  }
 
   render() {
-    const styles = getStyles(this.props);
+    const styles = getStyles(this.props, this.state);
 
     return (
       <div style={styles.root}>
@@ -101,8 +117,12 @@ export default class LayoutPane extends PureComponent {
           </div>
         </div>
         <div style={styles.body}>
-          <div style={styles.tools} />
-          <div style={styles.layout}>
+          <ResizableBox
+            style={styles.layout}
+            width={this.state.width}
+            height={this.state.height}
+            onResize={(e, { size }) => this.setState(size)}
+          >
             <EGridLayout
               selectedId={this.props.selectedId}
               editable={this.props.editable}
@@ -110,7 +130,7 @@ export default class LayoutPane extends PureComponent {
               className="layout"
               cols={12}
               rowHeight={30}
-              width={1000}
+              width={this.state.width}
               onLayoutSelect={this.props.onLayoutSelect}
               onLayoutChange={this.props.onLayoutChange}
             >
@@ -118,6 +138,12 @@ export default class LayoutPane extends PureComponent {
                 this.props.charts.map(e => <Chart {...e} />)
               }
             </EGridLayout>
+          </ResizableBox>
+          <div style={styles.editor}>
+            <Control
+              data={ZUtils.toValidation(this.props.selectedOption)}
+              onChange={this.handleOptionChange}
+            />
           </div>
         </div>
       </div>

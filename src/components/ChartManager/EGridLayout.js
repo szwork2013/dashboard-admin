@@ -3,7 +3,7 @@
 * @Date:   2017-04-01T15:28:03+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-06T20:58:06+08:00
+* @Last modified time: 2017-04-19T16:08:50+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -11,7 +11,10 @@
 import React, { PureComponent, PropTypes } from 'react';
 import GridLayout from 'react-grid-layout';
 
-import Menu from './Chart/Menu';
+import Menu from './Menu';
+
+import '../../../node_modules/react-grid-layout/css/styles.css';
+import '../../../node_modules/react-resizable/css/styles.css';
 
 const getStyles = () => {
   return {
