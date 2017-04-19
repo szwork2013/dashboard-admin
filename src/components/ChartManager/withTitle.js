@@ -3,7 +3,7 @@
 * @Date:   2017-04-05T00:50:35+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-19T01:02:12+08:00
+* @Last modified time: 2017-04-19T11:22:58+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -98,40 +98,46 @@ const withTitle = Chart => class extends PureComponent {
   // };
 
   render() {
-    const {
-      editable, type, title,
-    } = this.props;
-    if (!type) {
-      return editable ? (
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            border: '1px dashed #ccc',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          +
-        </div>
-      ) : null;
-    }
+    // const {
+    //   editable, type,
+    //   // title,
+    // } = this.props;
+    // if (!type) {
+    //   return editable ? (
+    //     <div
+    //       style={{
+    //         width: '100%',
+    //         height: '100%',
+    //         border: '1px dashed #ccc',
+    //         display: 'flex',
+    //         justifyContent: 'center',
+    //         alignItems: 'center',
+    //       }}
+    //     >
+    //       +
+    //     </div>
+    //   ) : null;
+    // }
 
     const styles = getStyles(this.props);
-    // const { title, option } = this.getOptions();
+    const { title } = Chart.props;
 
     return (
       <div style={styles.root}>
         <div style={styles.header}>
           <div style={styles.header.title}>{title}</div>
           <div style={styles.header.rightArea}>
-            <span style={styles.header.rightArea.label}>当日累加</span>
-            <span style={styles.header.rightArea.value}>1,521</span>
+            {
+              /*
+              <span style={styles.header.rightArea.label}>当日累加</span>
+              <span style={styles.header.rightArea.value}>1,521</span>
+              */
+              this.props.rightArea
+            }
           </div>
         </div>
         <div style={styles.body}>
-          <Chart />
+          { Chart }
         </div>
       </div>
     );

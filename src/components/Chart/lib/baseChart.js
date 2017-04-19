@@ -3,7 +3,7 @@
 * @Date:   2017-04-18T18:22:24+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-19T00:17:18+08:00
+* @Last modified time: 2017-04-19T11:47:13+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -31,7 +31,19 @@ export default class BaseChart extends PureComponent {
      * @type {[type]}
      */
     getOption: PropTypes.func.isRequired,
+
+    /**
+     * [onUpdate description]
+     * @type {[type]}
+     */
+    onUpdate: PropTypes.func,
   };
+
+  componentDidUpdate() {
+    if (this.props.onUpdate) {
+      this.props.onUpdate();
+    }
+  }
 
   render() {
     const {
@@ -40,9 +52,11 @@ export default class BaseChart extends PureComponent {
       ...otherProps
     } = this.props;
 
-    const finalOption = getOption(option, data || {});
+    const finalData = data || {};
+    const finalOption = getOption(option, finalData);
     return (
       <Echarts
+        ref={ref => (this.echartRef = ref)}
         style={{ position: 'relative', width: '100%', height: '100%' }}
         option={finalOption}
         theme={theme}

@@ -3,7 +3,7 @@
 * @Date:   2017-04-05T17:44:15+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-19T01:16:15+08:00
+* @Last modified time: 2017-04-19T15:15:06+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -73,20 +73,9 @@ const CHARTS = [
 export function getChart({ type } = {}) {
   const { chart, data } = CHARTS.filter(e => e.key === type).pop();
   chart.defaultProps.data = data;
+  chart.defaultProps.title = data.title;
 
-  // assert(data.series !== undefined, 'Series is Required.');
   assert(chart !== undefined, 'Invalid Chart Type.');
-
-  // const { option, data: defaultData, getOption, Chart } = chart.chart;
-  //
-  // // assert(combine !== undefined, 'Function combine cannot be undefined');
-  // // assert(option !== undefined, 'Function combine cannot be undefined');
-  //
-  // return {
-  //   title: data.title || defaultData.title,
-  //   Chart,
-  //   option: getOption(option, data.series ? data : defaultData),
-  // };
 
   return chart;
 }

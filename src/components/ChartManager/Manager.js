@@ -3,16 +3,16 @@
 * @Date:   2017-04-05T00:50:35+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-19T01:04:31+08:00
+* @Last modified time: 2017-04-19T11:39:24+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Echarts from 'echarts-for-react';
 
 import { getChart } from './meta';
+import withTitle from './withTitle';
 
 const getStyles = (props) => {
   return {
@@ -63,7 +63,7 @@ const getStyles = (props) => {
   };
 };
 
-export default class Chart extends PureComponent {
+export default class Manager extends PureComponent {
   /* eslint-disable */
   static propTypes = {
     type: PropTypes.string,
@@ -96,8 +96,10 @@ export default class Chart extends PureComponent {
 
   render() {
     const {
-      theme = 'bright',
-      title: t, editable, type, labels, series, text, subtext, colors,
+      // theme = 'bright',
+      // title: t,
+      editable, type,
+      // labels, series, text, subtext, colors,
     } = this.props;
     if (!type) {
       return editable ? (
@@ -116,12 +118,13 @@ export default class Chart extends PureComponent {
       ) : null;
     }
 
-    const styles = getStyles(this.props);
-    const data = { title: t, labels, series, text, subtext, colors };
+    // const styles = getStyles(this.props);
+    // const data = { title: t, labels, series, text, subtext, colors };
     // const { title, Chart: SelfChart, option } = getChart({ type, data });
     const Chart = getChart({ type });
+    const ChartWithTitle = withTitle(<Chart />);
 
-    return (<Chart />);
+    return <ChartWithTitle />;
 
     // if (SelfChart) {
     //   return <SelfChart {...option} />;
