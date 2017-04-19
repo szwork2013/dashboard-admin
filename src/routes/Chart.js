@@ -3,7 +3,7 @@
 * @Date:   2017-03-28T23:48:52+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-05T12:51:39+08:00
+* @Last modified time: 2017-04-19T17:26:23+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -29,6 +29,7 @@ function Chart(props) {
     <div style={styles.root}>
       <LayoutPane
         selectedId={props.selectedId}
+        selectedOption={props.selectedOption}
         removable={props.deletable}
         editable={props.editable}
         layout={props.layout}
@@ -47,6 +48,7 @@ const mapStateToProps = ({ chart }) => {
   const { selectedId, editable, layout, charts } = chart;
   return {
     selectedId,
+    selectedOption: (charts.filter(({ key }) => key === selectedId).pop() || {}).option,
     deletable: selectedId !== null,
     editable,
     layout,

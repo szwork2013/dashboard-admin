@@ -3,7 +3,7 @@
 * @Date:   2017-04-04T19:55:48+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-19T00:48:46+08:00
+* @Last modified time: 2017-04-19T16:40:38+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -13,7 +13,7 @@ import { connect } from 'dva';
 
 import { Icon } from 'antd';
 
-import CHARTS from './meta';
+import CHARTS, { getInitialState } from './meta';
 
 import styleClass from './Menu.less';
 
@@ -131,6 +131,8 @@ export default connect(
       if (type === undefined) {
         return dispatch({ type: 'chart/achart/remove', payload: key });
       }
-      return dispatch({ type: 'chart/achart/select', payload: { key, type } });
+
+      const { option, data } = getInitialState(type);
+      return dispatch({ type: 'chart/achart/select', payload: { key, type, option, data } });
     },
   }))(Menu);

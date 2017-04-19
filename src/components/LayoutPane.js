@@ -3,7 +3,7 @@
 * @Date:   2017-03-29T00:04:33+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-19T15:42:11+08:00
+* @Last modified time: 2017-04-19T17:48:00+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -12,6 +12,9 @@ import React, { PureComponent } from 'react';
 
 import { Switch, Button, Icon } from 'antd';
 import { ResizableBox } from 'react-resizable';
+
+import Control from 'zcontrol';
+import ZUtils from 'zcontrol/lib/utils';
 
 import EGridLayout from './ChartManager/EGridLayout';
 import Chart from './ChartManager';
@@ -63,6 +66,11 @@ const getStyles = (props, state) => {
       width: state.width,
       // height: state.height,
     },
+
+    editor: {
+      flex: 1,
+      position: 'relative',
+    },
   };
 };
 
@@ -71,6 +79,10 @@ export default class LayoutPane extends PureComponent {
     width: 1000,
     height: 560,
   };
+
+  handleOptionChange = (option) => {
+    console.log(option);
+  }
 
   render() {
     const styles = getStyles(this.props, this.state);
@@ -105,7 +117,6 @@ export default class LayoutPane extends PureComponent {
           </div>
         </div>
         <div style={styles.body}>
-
           <ResizableBox
             style={styles.layout}
             width={this.state.width}
@@ -128,6 +139,12 @@ export default class LayoutPane extends PureComponent {
               }
             </EGridLayout>
           </ResizableBox>
+          <div style={styles.editor}>
+            <Control
+              data={ZUtils.toValidation(this.props.selectedOption)}
+              onChange={this.handleOptionChange}
+            />
+          </div>
         </div>
       </div>
     );

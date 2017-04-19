@@ -3,7 +3,7 @@
 * @Date:   2017-04-05T00:50:35+08:00
 * @Email:  uniquecolesmith@gmail.com
 * @Last modified by:   eason
-* @Last modified time: 2017-04-19T11:39:24+08:00
+* @Last modified time: 2017-04-19T16:21:22+08:00
 * @License: MIT
 * @Copyright: Eason(uniquecolesmith@gmail.com)
 */
@@ -122,7 +122,7 @@ export default class Manager extends PureComponent {
     // const data = { title: t, labels, series, text, subtext, colors };
     // const { title, Chart: SelfChart, option } = getChart({ type, data });
     const Chart = getChart({ type });
-    const ChartWithTitle = withTitle(<Chart />);
+    const ChartWithTitle = withTitle(<Chart {...this.props} />);
 
     return <ChartWithTitle />;
 
